@@ -17,13 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin',function(){
+Route::get('/admin',['middleware' => 'isadmin',function(){
     return view('admin');
-});
+}]);
 
-Route::get('/user',function(){
+Route::get('/user',['middleware' => 'auth',function(){
     return view('user');
-});
+}]);
 
 Auth::routes();
 
