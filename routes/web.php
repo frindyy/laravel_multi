@@ -21,10 +21,10 @@ Route::get('/admin',['middleware' => 'isadmin',function(){
     return view('admin');
 }]);
 
-Route::get('/user',['middleware' => 'auth',function(){
+Route::get('/user',['middleware' => ['auth','verified'],function(){
     return view('user');
 }]);
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 // Route::get('/home', 'HomeController@index')->name('home');
